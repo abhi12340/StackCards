@@ -16,65 +16,37 @@ internal enum StackedCardState {
 
 class StackCardsManager: NSObject, StackCardLayoutDatasource {
     
-    var stackedCardState: StackedCardState {
-        didSet {
-            switch stackedCardState {
-            case .collapsed:
-                stackCard?.position = .collapsed
-                tapGesture.isEnabled = true
-                
-            case .expanded:
-                stackCard?.position = .expanded
-                tapGesture.isEnabled = false
-            }
-        }
+    var tappedItemStatus: (indexPath: IndexPath?, status: StackedCardState?) {
+        return (itemIndexPath, itemStatus)
     }
+    
+    private var itemIndexPath: IndexPath?
+    
+    private var itemStatus: StackedCardState?
     
     var configuration: Configuration
     
     weak var delegate: StackCardsManagerDelegate?
+    weak var datasource: StackCardManagerDataSource?
     weak var collectionView: UICollectionView?
     weak var cardsCollectionViewHeight: NSLayoutConstraint?
     weak var stackCard: StackCard? = nil
-    var tapGesture = UITapGestureRecognizer()
     
-
-    convenience override init() {
-        
-        let configuration = Configuration(cardOffset: 40, collapsedHeight: 200, expandedHeight: 500, cardHeight: 200, downwardThreshold: 20, upwardThreshold: 20)
-        
-        self.init(stackCardState: .collapsed, configuration: configuration, collectionView: nil, heightConstraint: nil)
-    }
-    
-    func cardsStateFromCardsPosition(position: CardsPosition) -> StackedCardState {
+    func cardsStateFromCardsPosition(position: CardsPosition?) -> StackedCardState? {
         switch position {
         case .expanded:
             return StackedCardState.expanded
         case .collapsed:
             return StackedCardState.collapsed
-        }
-    }
-    
-    func cardsPositionFromCardsState(state: StackedCardState) -> CardsPosition? {
-        switch state {
-        case .collapsed:
-            return CardsPosition.expanded
-        case .expanded:
-            return CardsPosition.collapsed
+        default:
+            return nil
         }
     }
 
     init(stackCardState: CardsPosition,
          configuration: Configuration,
-         collectionView: UICollectionView?,
+         collectionView: UICollectionView,
          heightConstraint: NSLayoutConstraint?) {
-        
-        switch stackCardState {
-        case .expanded:
-            self.stackedCardState = StackedCardState.expanded
-        case .collapsed:
-            self.stackedCardState = StackedCardState.collapsed
-        }
 
         self.configuration = configuration
         cardsCollectionViewHeight = heightConstraint
@@ -88,36 +60,19 @@ class StackCardsManager: NSObject, StackCardLayoutDatasource {
         cardsView.collectionViewLayout = stackCardLayout
         cardsView.bounces = true
         cardsView.alwaysBounceVertical = true
-        cardsView.delegate = self
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedCard))
-        cardsView.addGestureRecognizer(tapGesture)
-        tapGesture.isEnabled = stackCardState == .collapsed
-    }
-    
-    @objc func tappedCard(tapGesture: UITapGestureRecognizer) {
-        guard let cardsCollectionView = collectionView else {
-            return
-        }
-
-        delegate?.tappedOnCardsStack?(cardsCollectionView: cardsCollectionView)
-    }
-    
-    func triggerStateCallBack() {
-        guard let position = cardsPositionFromCardsState(state: stackedCardState) else {
-            return
-        }
-        delegate?.stackCardsPositionChangedTo?(position: position)
+        cardsView.dataSource = self
     }
     
     func updateView(with position: CardsPosition) {
         var ht:Float = 0.0
-        stackedCardState = cardsStateFromCardsPosition(position: position)
+        let stackedCardState = cardsStateFromCardsPosition(position: position)
         switch stackedCardState {
         case .collapsed:
-            ht = configuration.collapsedHeight
-            
-        case .expanded:
             ht = configuration.expandedHeight
+        case .expanded:
+            ht = configuration.collapsedHeight
+        default:
+            ht = configuration.collapsedHeight
         }
         
         DispatchQueue.main.async { [weak self] in
@@ -125,27 +80,69 @@ class StackCardsManager: NSObject, StackCardLayoutDatasource {
             guard let weakSelf = self else {
                 return
             }
-            weakSelf.cardsCollectionViewHeight?.constant = CGFloat(ht)
-            
             UIView.animate(withDuration: 0.3, animations: {
                 weakSelf.collectionView?.collectionViewLayout.invalidateLayout()
+                weakSelf.cardsCollectionViewHeight?.constant = CGFloat(ht)
                 weakSelf.collectionView?.superview?.layoutIfNeeded()
-                }, completion: { (finished) in
-                    weakSelf.triggerStateCallBack()
             })
         }
     }
 }
 
-
-extension StackCardsManager: UICollectionViewDelegate {
+extension StackCardsManager: UICollectionViewDataSource {
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.stackCardsCollectionView?(collectionView, didSelectItemAt: indexPath)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return datasource?.stack(collectionView, numberOfItemsInSection: section) ?? 0
     }
     
-    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        delegate?.stackCardsCollectionView?(collectionView, willDisplay: cell, forItemAt: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let datasource = datasource else {
+            fatalError("datasouce instance not available please check")
+        }
+        return datasource.stack(collectionView, cellForItemAt: indexPath)
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return datasource?.numberOfSectionsStackCard?(in: collectionView) ?? 0
+    }
+}
+
+extension StackCardsManager {
+    
+    func register<T: StackCardCell>(_ cellClass: T.Type?, forCellWithReuseIdentifier identifier: String) {
+        collectionView?.register(cellClass, forCellWithReuseIdentifier: identifier)
+    }
+    
+    func dequeueReusableCellStackCard(withReuseIdentifier identifier: String,
+                                      for indexPath: IndexPath) -> UICollectionViewCell {
+        guard let collectionView = collectionView else {
+            fatalError("collection view is not present")
+        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
+                                                            for: indexPath) as? StackCardCell else {
+            fatalError("cell is not dequed")
+        }
+        cell.indexPath = indexPath
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cellTap(_:)))
+        cell.addGestureRecognizer(tapGesture)
+       return cell
+   }
+    
+    @objc func cellTap(_ sender: UITapGestureRecognizer) {
+        if  let cell = sender.view as? StackCardCell {
+            itemStatus = self.cardsStateFromCardsPosition(position: cell.cellState)
+            itemIndexPath = cell.indexPath
+            if let indexPath = cell.indexPath, let state = cell.cellState {
+                delegate?.stack?(tappded: cell, for: indexPath, state: state)
+            }
+            updateView(with: cell.cellState ?? .collapsed)
+            if cell.cellState == .collapsed || cell.cellState == nil {
+                cell.cellState = .expanded
+            } else {
+                cell.cellState = .collapsed
+            }
+        }
     }
 }
 

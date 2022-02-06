@@ -14,20 +14,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionViewHeightConstaints: NSLayoutConstraint!
     
     var cardState: CardsPosition = .collapsed
-    var cardsStack: StackCard = StackCard()
-    var nameList = ["Details", "Resume", "Assesment"]
+    var cardsStack: StackCard?
+    var nameList = ["Details", "Resume", "Assesment", "practice"]
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        collectionView.register(CardCell.self, forCellWithReuseIdentifier: "cardCell")
-        collectionView.dataSource = self
         let expandedHeight = Float(UIScreen.main.bounds.size.height - 124)
         
-        let config = Configuration(cardOffset: 60, collapsedHeight: 200, expandedHeight: expandedHeight, cardHeight: 200, downwardThreshold: 20, upwardThreshold: 20, leftSpacing: 16.0, rightSpacing: 16.0)
+        let config = Configuration(cardOffset: 40, collapsedHeight: 200, expandedHeight: expandedHeight, cardHeight: 200, leftSpacing: 16.0, rightSpacing: 16.0)
 
         cardsStack = StackCard(stackCardState: cardState, configuration: config, collectionView: collectionView, collectionViewHeight: collectionViewHeightConstaints)
-        cardsStack.delegate = self
+        cardsStack?.registerCell(CardCell.self, forIdentifier: "cardCell")
+        cardsStack?.datasource = self
+        cardsStack?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,35 +35,30 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource, StackCardsManagerDelegate {
+extension ViewController: StackCardsManagerDelegate {
     
-    func tappedOnCardsStack(cardsCollectionView: UICollectionView) {
-        cardsStack.changeCardsPosition(to: .expanded)
+    func stack(tappded cell: UICollectionViewCell, for indexPath: IndexPath, state: CardsPosition) {
+        print("debugging", indexPath.row, "state", state.rawValue)
     }
+}
+
+extension ViewController: StackCardManagerDataSource {
     
-    func stackCardsCollectionView(_ cardsCollectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-        cardsStack.changeCardsPosition(to: .collapsed)
-    }
-    
-    func stackCardsPositionChangedTo(position: CardsPosition) {
-        print("CardsPosition Changed To \(position.rawValue)")
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return nameList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cardView = collectionView.dequeueReusableCell(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else {
+    func stack(_ cardsCollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cardView = cardsStack?.dequeueReusableCellStackCard(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else {
             fatalError("Failed to downcast to CardView")
         }
         cardView.label.text = nameList[indexPath.item]
         return cardView
     }
-
+    
+    func stack(_ cardsCollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return nameList.count
+    }
+    
+    func numberOfSectionsStackCard(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
 }
 

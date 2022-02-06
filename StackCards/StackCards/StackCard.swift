@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 
+public protocol StackCardCell: UICollectionViewCell {
+    var indexPath: IndexPath? { get set }
+    var cellState: CardsPosition? { get set }
+}
+
 /// Struct for the UI information related to cards.
 public struct Configuration {
     
@@ -24,12 +29,6 @@ public struct Configuration {
     /// Height of the cards
     public let cardHeight: Float
     
-    /// The minimum threshold required for the cards to be dragged down when the cards are in expanded state
-    public let downwardThreshold: Float
-    
-    /// The minimum threshold required for the cards to be dragged up when the cards are in collapsed state
-    public let upwardThreshold: Float
-    
     /// Vertical Spacing between the cards while the cards are in expanded state
     public let verticalSpacing: Float
     
@@ -41,15 +40,12 @@ public struct Configuration {
     
     public init(cardOffset: Float, collapsedHeight: Float,
                 expandedHeight: Float, cardHeight: Float,
-                downwardThreshold: Float = 20, upwardThreshold: Float = 20,
                 leftSpacing: Float = 8.0, rightSpacing: Float = 8.0,
                 verticalSpacing: Float = 8.0) {
         
         self.cardOffset = cardOffset
         self.collapsedHeight = collapsedHeight
         self.expandedHeight = expandedHeight
-        self.downwardThreshold = downwardThreshold
-        self.upwardThreshold = upwardThreshold
         self.cardHeight = cardHeight
         self.verticalSpacing = verticalSpacing
         self.leftSpacing = leftSpacing
@@ -69,11 +65,15 @@ public struct Configuration {
 
 /// Delegate to get hooks to interaction over cards
 @objc public protocol StackCardsManagerDelegate {
-    
-    @objc optional func stackCardsPositionChangedTo(position: CardsPosition)
-    @objc optional func tappedOnCardsStack(cardsCollectionView: UICollectionView)
-    @objc optional func stackCardsCollectionView(_ cardsCollectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    @objc optional func stackCardsCollectionView(_ cardsCollectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    @objc optional func stack(tappded cell: UICollectionViewCell,
+                              for indexPath: IndexPath,
+                              state: CardsPosition)
+}
+
+@objc public protocol StackCardManagerDataSource: AnyObject {
+    func stack(_ cardsCollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    func stack(_ cardsCollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    @objc optional func numberOfSectionsStackCard(in collectionView: UICollectionView) -> Int
 }
 
 public class StackCard {
@@ -83,27 +83,16 @@ public class StackCard {
             stackCardsManager.delegate = delegate
         }
     }
-    internal var stackCardsManager = StackCardsManager()
+    
+    public weak var datasource: StackCardManagerDataSource? = nil {
+        didSet {
+            stackCardsManager.datasource = datasource
+        }
+    }
+    
+    internal var stackCardsManager: StackCardsManager
     
     internal var position: CardsPosition
-    
-    /// init
-    /// uses config = Configuration(cardOffset: 40, collapsedHeight: 200, expandedHeight: 500, cardHeight: 200, downwardThreshold: 20, upwardThreshold: 20) in
-    /// init(cardsState: .Collapsed, configuration: config, collectionView: nil, collectionViewHeight: nil)
-    /// - returns: CardStack
-    public convenience init() {
-        let configuration = Configuration(cardOffset: 40,
-                                          collapsedHeight: 200,
-                                          expandedHeight: 500,
-                                          cardHeight: 200,
-                                          downwardThreshold: 20,
-                                          upwardThreshold: 20)
-
-        self.init(stackCardState: .collapsed,
-                  configuration: configuration,
-                  collectionView: nil,
-                  collectionViewHeight: nil)
-    }
     
     /// init
     ///
@@ -113,7 +102,7 @@ public class StackCard {
     /// - parameter collectionViewHeight: NSLayoutConstraint, height constraint of the collectionview
     ///
     /// - returns: CardStack
-    public init(stackCardState: CardsPosition, configuration: Configuration, collectionView: UICollectionView?, collectionViewHeight: NSLayoutConstraint?) {
+    public init(stackCardState: CardsPosition, configuration: Configuration, collectionView: UICollectionView, collectionViewHeight: NSLayoutConstraint?) {
         
         position = stackCardState
         stackCardsManager = StackCardsManager(stackCardState: stackCardState, configuration: configuration, collectionView: collectionView, heightConstraint: collectionViewHeight)
@@ -126,4 +115,12 @@ public class StackCard {
     public func changeCardsPosition(to position: CardsPosition) {
         stackCardsManager.updateView(with: position)
     }
+    
+    public func registerCell<T: StackCardCell>(_ stackCardCell: T.Type?, forIdentifier: String) {
+        stackCardsManager.register(stackCardCell, forCellWithReuseIdentifier: forIdentifier)
+    }
+    
+    public func dequeueReusableCellStackCard(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
+        stackCardsManager.dequeueReusableCellStackCard(withReuseIdentifier: identifier, for: indexPath)
+   }
 }

@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import StackCards
 
-class CardCell: UICollectionViewCell {
+class CardCell: UICollectionViewCell, StackCardCell {
+   
+    var indexPath: IndexPath?
+    
+    var cellState: CardsPosition? = .collapsed
+    
     
     lazy var label: UILabel = {
         $0.textColor = .black
@@ -26,8 +32,7 @@ class CardCell: UICollectionViewCell {
                                      self.trailingAnchor.constraint(equalTo: label.trailingAnchor,
                                                                     constant: 8),
                                      self.heightAnchor.constraint(equalToConstant: 40),
-                                     self.widthAnchor.constraint(equalToConstant: self.frame.width - 16),
-                                     self.topAnchor.constraint(equalTo: self.topAnchor)])
+                                     self.widthAnchor.constraint(equalToConstant: self.frame.width)])
     }
     
     required init?(coder: NSCoder) {
