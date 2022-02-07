@@ -44,8 +44,9 @@ https://user-images.githubusercontent.com/29311597/152820466-80af860d-de56-487a-
         @objc optional func numberOfSectionsStackCard(in collectionView: UICollectionView) -> Int
     }
     
-  ## Please make sure to Extend the StackCardCell protocol to provide your cells power of expand and collapse.
-  ## with power here come some responsiblity need need to set the value of the variables 😜
+  ## Please make sure to Extend the StackCardCell protocol while creating your UICollectionviewCell 
+  ## to provide your cells power of expand and collapse.
+  ## with power here come some responsiblity need to set the value of the variables 😜
      pass your collection view instance to the StackCard and see the magic.
      var indexPath: IndexPath? { get set }
      var cellState: CardsPosition { get set }
