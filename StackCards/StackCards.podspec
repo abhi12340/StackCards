@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   spec.license =  { :type => "MIT", :file => "LICENSE" }
   spec.author             = { "Abhishek Kumar" => "abhishekkumarthakur786@gmail.com" }
   spec.platform = :ios
-  spec.ios.deployment_target  = '11.0'
+  spec.ios.deployment_target  = '13.0'
   spec.requires_arc = true
   spec.source = { :git => "https://github.com/abhi12340/StackCards.git",
                   :tag => "#{spec.version}"
