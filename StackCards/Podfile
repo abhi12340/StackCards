@@ -8,3 +8,7 @@ target 'StackCards' do
   # Pods for StackCards
 
 end
+
+target 'DemoApplication' do
+    pod 'StackCards', :path => "/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards"
+end

@@ -1,0 +1,16 @@
+PODS:
+  - StackCards (0.0.1)
+
+DEPENDENCIES:
+  - StackCards (from `/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards`)
+
+EXTERNAL SOURCES:
+  StackCards:
+    :path: "/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards"
+
+SPEC CHECKSUMS:
+  StackCards: b936d43414eb0130e3c80b14a7c336fbb9cbba09
+
+PODFILE CHECKSUM: 5d35d162a5244459338007b91cc3ad2886baa9de
+
+COCOAPODS: 1.11.2

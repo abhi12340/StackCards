@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DC1596D1C737A433FAC63DC /* Pods_StackCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12972616F102CDAA712D75B9 /* Pods_StackCards.framework */; };
+		3D30BF62A72CF720120E799F /* libPods-DemoApplication.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0CF78DC194A25222B426B46 /* libPods-DemoApplication.a */; };
 		EF83230827AFA21400F64F9E /* StackCards.h in Headers */ = {isa = PBXBuildFile; fileRef = EF83230727AFA21400F64F9E /* StackCards.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF83230F27AFA25300F64F9E /* StackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF83230E27AFA25300F64F9E /* StackCard.swift */; };
 		EF83231127AFA26A00F64F9E /* StackCardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF83231027AFA26A00F64F9E /* StackCardsManager.swift */; };
@@ -17,36 +19,14 @@
 		EF83232227AFF79500F64F9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF83232027AFF79500F64F9E /* Main.storyboard */; };
 		EF83232427AFF79600F64F9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF83232327AFF79600F64F9E /* Assets.xcassets */; };
 		EF83232727AFF79600F64F9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF83232527AFF79600F64F9E /* LaunchScreen.storyboard */; };
-		EF83232D27AFF7D800F64F9E /* StackCards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF83230427AFA21400F64F9E /* StackCards.framework */; };
-		EF83232E27AFF7D800F64F9E /* StackCards.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF83230427AFA21400F64F9E /* StackCards.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EF83233327AFFA3100F64F9E /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF83233227AFFA3100F64F9E /* CardCell.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EF83232F27AFF7D800F64F9E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EF8322FB27AFA21400F64F9E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EF83230327AFA21400F64F9E;
-			remoteInfo = StackCards;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		EF83233127AFF7D800F64F9E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EF83232E27AFF7D800F64F9E /* StackCards.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		12972616F102CDAA712D75B9 /* Pods_StackCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StackCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74224E014FEEAF743FB18A6B /* Pods-DemoApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApplication.debug.xcconfig"; path = "Target Support Files/Pods-DemoApplication/Pods-DemoApplication.debug.xcconfig"; sourceTree = "<group>"; };
+		C2EC1136A59C03D6FA648E6B /* Pods-StackCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackCards.release.xcconfig"; path = "Target Support Files/Pods-StackCards/Pods-StackCards.release.xcconfig"; sourceTree = "<group>"; };
+		D42C570757165E3448C23B95 /* Pods-DemoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApplication.release.xcconfig"; path = "Target Support Files/Pods-DemoApplication/Pods-DemoApplication.release.xcconfig"; sourceTree = "<group>"; };
 		EF83230427AFA21400F64F9E /* StackCards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StackCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF83230727AFA21400F64F9E /* StackCards.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StackCards.h; sourceTree = "<group>"; };
 		EF83230E27AFA25300F64F9E /* StackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackCard.swift; sourceTree = "<group>"; };
@@ -61,6 +41,8 @@
 		EF83232627AFF79600F64F9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF83232827AFF79600F64F9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF83233227AFFA3100F64F9E /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		F0CF78DC194A25222B426B46 /* libPods-DemoApplication.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoApplication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7996A7307A761E2151E0060 /* Pods-StackCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackCards.debug.xcconfig"; path = "Target Support Files/Pods-StackCards/Pods-StackCards.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DC1596D1C737A433FAC63DC /* Pods_StackCards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,13 +58,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF83232D27AFF7D800F64F9E /* StackCards.framework in Frameworks */,
+				3D30BF62A72CF720120E799F /* libPods-DemoApplication.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59DB0F4FA8FD1936D78786C7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74224E014FEEAF743FB18A6B /* Pods-DemoApplication.debug.xcconfig */,
+				D42C570757165E3448C23B95 /* Pods-DemoApplication.release.xcconfig */,
+				F7996A7307A761E2151E0060 /* Pods-StackCards.debug.xcconfig */,
+				C2EC1136A59C03D6FA648E6B /* Pods-StackCards.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EF8322FA27AFA21400F64F9E = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +84,7 @@
 				EF83231927AFF79500F64F9E /* DemoApplication */,
 				EF83230527AFA21400F64F9E /* Products */,
 				EF83232C27AFF7D800F64F9E /* Frameworks */,
+				59DB0F4FA8FD1936D78786C7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +122,8 @@
 		EF83232C27AFF7D800F64F9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0CF78DC194A25222B426B46 /* libPods-DemoApplication.a */,
+				12972616F102CDAA712D75B9 /* Pods_StackCards.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,6 +174,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF83230B27AFA21400F64F9E /* Build configuration list for PBXNativeTarget "StackCards" */;
 			buildPhases = (
+				4113DA79A56C0C1D76B84B9F /* [CP] Check Pods Manifest.lock */,
 				EF8322FF27AFA21400F64F9E /* Headers */,
 				EF83230027AFA21400F64F9E /* Sources */,
 				EF83230127AFA21400F64F9E /* Frameworks */,
@@ -194,15 +193,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF83232927AFF79600F64F9E /* Build configuration list for PBXNativeTarget "DemoApplication" */;
 			buildPhases = (
+				909C6EF8AC77D7AEC99F06F2 /* [CP] Check Pods Manifest.lock */,
 				EF83231427AFF79500F64F9E /* Sources */,
 				EF83231527AFF79500F64F9E /* Frameworks */,
 				EF83231627AFF79500F64F9E /* Resources */,
-				EF83233127AFF7D800F64F9E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EF83233027AFF7D800F64F9E /* PBXTargetDependency */,
 			);
 			name = DemoApplication;
 			productName = DemoApplication;
@@ -267,6 +265,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4113DA79A56C0C1D76B84B9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StackCards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		909C6EF8AC77D7AEC99F06F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DemoApplication-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EF83230027AFA21400F64F9E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -290,14 +335,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EF83233027AFF7D800F64F9E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EF83230327AFA21400F64F9E /* StackCards */;
-			targetProxy = EF83232F27AFF7D800F64F9E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EF83232027AFF79500F64F9E /* Main.storyboard */ = {
@@ -443,6 +480,7 @@
 		};
 		EF83230C27AFA21400F64F9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7996A7307A761E2151E0060 /* Pods-StackCards.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -473,6 +511,7 @@
 		};
 		EF83230D27AFA21400F64F9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2EC1136A59C03D6FA648E6B /* Pods-StackCards.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -502,6 +541,7 @@
 		};
 		EF83232A27AFF79600F64F9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74224E014FEEAF743FB18A6B /* Pods-DemoApplication.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,6 +570,7 @@
 		};
 		EF83232B27AFF79600F64F9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D42C570757165E3448C23B95 /* Pods-DemoApplication.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

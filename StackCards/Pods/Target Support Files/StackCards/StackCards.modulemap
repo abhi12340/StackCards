@@ -1,0 +1,6 @@
+module StackCards {
+  umbrella header "StackCards-umbrella.h"
+
+  export *
+  module * { export * }
+}
