@@ -30,8 +30,19 @@ https://user-images.githubusercontent.com/29311597/152820466-80af860d-de56-487a-
   
   ## There are few Delegate and Datasource need to be conform 
   ## before getting started and Stack your views 😀
+      
+     Register cells using  StackCards registerCell method
+     public func registerCell<T: StackCardCell>(_ stackCardCell: T.Type?, forIdentifier: String) {
+     
+     }
+     
+     Use StackCards dequeue method
+     public func dequeueReusableCellStackCard(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
+        stackCardsManager.dequeueReusableCellStackCard(withReuseIdentifier: identifier, for: indexPath)
+     }
+     
      Delegate to get hooks to interaction over cells
-    @objc public protocol StackCardsManagerDelegate {
+     @objc public protocol StackCardsManagerDelegate {
         @objc optional func stack(tappded cell: UICollectionViewCell?,
                                   for indexPath: IndexPath?,
                                   state: CardsPosition)
