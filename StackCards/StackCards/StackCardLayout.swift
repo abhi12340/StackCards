@@ -17,7 +17,7 @@ internal protocol StackCardLayoutDatasource: AnyObject {
 class StackCardLayout: UICollectionViewLayout {
     var contentHeight: CGFloat = 0.0
     var dataSource: StackCardLayoutDatasource!
-    var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
+    private var cachedLayoutAttributes = [UICollectionViewLayoutAttributes]()
     private var lastOffset: CGFloat = 0.0
     
     override init() {
@@ -50,6 +50,8 @@ class StackCardLayout: UICollectionViewLayout {
         }
     }
     
+    /// To reset all the cell to the initailse state of collapse and reduce the height of the content
+    /// - Parameter items: no of items in section.
     private func resetFrame(for items: Int) {
         for index in 0..<items {
             let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
@@ -60,6 +62,11 @@ class StackCardLayout: UICollectionViewLayout {
         }
     }
     
+    /// To create the frame when as cell in the collection view is tapped and
+    /// handle the collapse and expand senerios
+    /// - Parameter items: no of items present in the section and using those items number
+    /// generating the UICollectionViewLayoutAttributes. And increasing the content height of the collection view if
+    /// cell needs to be Expand.
     private func createFrame(for items: Int) {
         for index in 0..<items {
             let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
@@ -97,7 +104,17 @@ class StackCardLayout: UICollectionViewLayout {
         return cachedLayoutAttributes[indexPath.item]
     }
     
-    func calculateFrame(for index: Int) -> CGRect {
+    
+    /// To determine the frame when cell has been collapse and expanded we are checking the current position of the cell
+    /// weather it is collapsed or expanded to expand we are managing the y axis of the collectionview content and increasing the
+    /// distance of the expanded cell and cell below the cell going to be expanded with the height of the expanded cell
+    //  offset = expandedCellFrame.y + cellHeight with the cell top offset * (index - row -1) with other consecutive cells
+    /// and cell above the expanded cell are going to have the y axis decrease to move towards top. with adding the cellsize and offset * index
+    /// specials case with top card  to expand we need to manage by  collapsing other expanded cards and with the lastOffset
+    /// variable we can get what should be the y position of the  below cells. And last case is initial collapse case of  all the cells.
+    /// - Parameter index: index position of the cell
+    /// - Returns: returns the frame rect.
+    private func calculateFrame(for index: Int) -> CGRect {
         var frame = CGRect(origin: CGPoint(x: CGFloat(dataSource.configuration.leftSpacing),
                                            y: 0), size: CGSize(width:UIScreen.main.bounds.width - CGFloat(dataSource.configuration.leftSpacing + dataSource.configuration.rightSpacing), height: CGFloat(dataSource.configuration.cardHeight)))
         var frameOrigin = frame.origin
@@ -138,7 +155,11 @@ class StackCardLayout: UICollectionViewLayout {
         return frame
     }
     
-    func resetToCollapse(index: Int) -> CGRect {
+    /// Handles the reseting of the cells position to collapse state helper method to reset the state of the cells
+    /// when other cell is been tapped.
+    /// - Parameter index: index of the items.
+    /// - Returns: returns the frame of the cell in the reset positon.
+    private func resetToCollapse(index: Int) -> CGRect {
         var frame = CGRect(origin: CGPoint(x: CGFloat(dataSource.configuration.leftSpacing),
                                            y: 0), size: CGSize(width:UIScreen.main.bounds.width - CGFloat(dataSource.configuration.leftSpacing + dataSource.configuration.rightSpacing), height: CGFloat(dataSource.configuration.cardHeight)))
         var frameOrigin = frame.origin

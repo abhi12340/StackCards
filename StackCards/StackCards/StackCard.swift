@@ -63,13 +63,14 @@ public struct Configuration {
 }
 
 
-/// Delegate to get hooks to interaction over cards
+/// Delegate to get hooks to interaction over cells
 @objc public protocol StackCardsManagerDelegate {
     @objc optional func stack(tappded cell: UICollectionViewCell?,
                               for indexPath: IndexPath?,
                               state: CardsPosition)
 }
 
+/// Datasource to get hooks to recive the data from the UI
 @objc public protocol StackCardManagerDataSource: AnyObject {
     func stack(_ cardsCollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     func stack(_ cardsCollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
