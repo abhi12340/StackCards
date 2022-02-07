@@ -12,7 +12,7 @@ class CardCell: UICollectionViewCell, StackCardCell {
    
     var indexPath: IndexPath?
     
-    var cellState: CardsPosition? = .collapsed
+    var cellState: CardsPosition = .collapsed
     
     
     lazy var label: UILabel = {

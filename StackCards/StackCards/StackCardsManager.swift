@@ -16,13 +16,16 @@ internal enum StackedCardState {
 
 class StackCardsManager: NSObject, StackCardLayoutDatasource {
     
-    var tappedItemStatus: (indexPath: IndexPath?, status: StackedCardState?) {
+    var needToReset: Bool = false
+    
+    
+    var tappedItemStatus: (indexPath: IndexPath?, status: CardsPosition?) {
         return (itemIndexPath, itemStatus)
     }
     
     private var itemIndexPath: IndexPath?
     
-    private var itemStatus: StackedCardState?
+    private var itemStatus: CardsPosition?
     
     var configuration: Configuration
     
@@ -52,15 +55,12 @@ class StackCardsManager: NSObject, StackCardLayoutDatasource {
         cardsCollectionViewHeight = heightConstraint
         self.collectionView = collectionView
         super.init()
-        guard let cardsView = self.collectionView else {
-            return
-        }
         let stackCardLayout = StackCardLayout()
         stackCardLayout.dataSource = self
-        cardsView.collectionViewLayout = stackCardLayout
-        cardsView.bounces = true
-        cardsView.alwaysBounceVertical = true
-        cardsView.dataSource = self
+        self.collectionView?.collectionViewLayout = stackCardLayout
+        self.collectionView?.bounces = true
+        self.collectionView?.alwaysBounceVertical = true
+        self.collectionView?.dataSource = self
     }
     
     func updateView(with position: CardsPosition) {
@@ -81,6 +81,7 @@ class StackCardsManager: NSObject, StackCardLayoutDatasource {
                 return
             }
             UIView.animate(withDuration: 0.3, animations: {
+                weakSelf.needToReset = false
                 weakSelf.collectionView?.collectionViewLayout.invalidateLayout()
                 weakSelf.cardsCollectionViewHeight?.constant = CGFloat(ht)
                 weakSelf.collectionView?.superview?.layoutIfNeeded()
@@ -130,14 +131,14 @@ extension StackCardsManager {
    }
     
     @objc func cellTap(_ sender: UITapGestureRecognizer) {
+        needToReset = true
+        collectionView?.collectionViewLayout.invalidateLayout()
         if  let cell = sender.view as? StackCardCell {
-            itemStatus = self.cardsStateFromCardsPosition(position: cell.cellState)
+            itemStatus = cell.cellState
             itemIndexPath = cell.indexPath
-            if let indexPath = cell.indexPath, let state = cell.cellState {
-                delegate?.stack?(tappded: cell, for: indexPath, state: state)
-            }
-            updateView(with: cell.cellState ?? .collapsed)
-            if cell.cellState == .collapsed || cell.cellState == nil {
+            delegate?.stack?(tappded: cell, for: cell.indexPath, state: cell.cellState )
+            updateView(with: cell.cellState)
+            if cell.cellState == .collapsed {
                 cell.cellState = .expanded
             } else {
                 cell.cellState = .collapsed

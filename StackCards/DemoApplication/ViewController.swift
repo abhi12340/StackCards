@@ -37,8 +37,8 @@ class ViewController: UIViewController {
 
 extension ViewController: StackCardsManagerDelegate {
     
-    func stack(tappded cell: UICollectionViewCell, for indexPath: IndexPath, state: CardsPosition) {
-        print("debugging", indexPath.row, "state", state.rawValue)
+    func stack(tappded cell: UICollectionViewCell?, for indexPath: IndexPath?, state: CardsPosition) {
+        print("debugging", indexPath?.row ?? 0, "state", state.rawValue)
     }
 }
 

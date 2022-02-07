@@ -10,7 +10,8 @@ import UIKit
 
 internal protocol StackCardLayoutDatasource: AnyObject {
     var configuration: Configuration { get }
-    var tappedItemStatus: (indexPath: IndexPath?, status: StackedCardState?) { get }
+    var tappedItemStatus: (indexPath: IndexPath?, status: CardsPosition?) { get }
+    var needToReset: Bool { get set }
 }
 
 class StackCardLayout: UICollectionViewLayout {
@@ -35,17 +36,40 @@ class StackCardLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
+        lastOffset = 0
         cachedLayoutAttributes.removeAll()
         contentHeight = dataSource.tappedItemStatus.status == .expanded ? 0.0
         : CGFloat(dataSource.configuration.expandedHeight)
         guard let noOfItems = collectionView?.numberOfItems(inSection: 0) else {
             return
         }
-        for index in 0..<noOfItems {
+        if dataSource.needToReset {
+            resetFrame(for: noOfItems)
+        } else {
+            createFrame(for: noOfItems)
+        }
+    }
+    
+    private func resetFrame(for items: Int) {
+        for index in 0..<items {
+            let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
+            layout.frame = resetToCollapse(index: index)
+            layout.zIndex = index
+            layout.isHidden = false
+            cachedLayoutAttributes.append(layout)
+        }
+    }
+    
+    private func createFrame(for items: Int) {
+        for index in 0..<items {
             let layout = UICollectionViewLayoutAttributes(forCellWith: IndexPath(row: index, section: 0))
             layout.frame = calculateFrame(for: index)
             if dataSource.tappedItemStatus.status == .collapsed && index == dataSource.tappedItemStatus.indexPath?.row{
                 contentHeight +=  layout.frame.size.height
+            } else {
+                if let cell = collectionView?.cellForItem(at: IndexPath(row: index, section: 0)) as? StackCardCell {
+                    cell.cellState = .collapsed
+                }
             }
             layout.zIndex = index
             layout.isHidden = false
@@ -80,16 +104,28 @@ class StackCardLayout: UICollectionViewLayout {
         let itemStatus = dataSource.tappedItemStatus
         if itemStatus.status != nil && itemStatus.status == .collapsed {
             if let row = itemStatus.indexPath?.row {
-                if index <= row {
-                    let offset = (Float(index) * dataSource.configuration.cardOffset)
-                    frameOrigin.y = contentHeight - CGFloat(dataSource.configuration.cardHeight - offset)
-                    if index == row {
-                        lastOffset = frameOrigin.y
+                if row == 0 {
+                    if index > 0 {
+                        frameOrigin.y = lastOffset +  CGFloat(dataSource.configuration.cardOffset * Float(index - 1))
+                        print("greater","index", index + 1, "row", row, "yOrigin", frameOrigin.y)
+                    } else {
+                        let offset = (Float(index + 1) * dataSource.configuration.cardOffset)
+                        frameOrigin.y = contentHeight - CGFloat(dataSource.configuration.cardHeight - offset)
+                        print("less equal","index", index + 1, "row", row, "yOrigin", frameOrigin.y)
+                        lastOffset = frameOrigin.y + CGFloat(dataSource.configuration.cardHeight)
                     }
-                    print("less equal","index", index, "row", row, "yOrigin", frameOrigin.y)
                 } else {
-                    frameOrigin.y = lastOffset +  CGFloat(dataSource.configuration.cardOffset * Float(index))
-                    print("greater","index", index, "row", row, "yOrigin", frameOrigin.y)
+                    if index <= row {
+                        let offset = (Float(index) * dataSource.configuration.cardOffset)
+                        frameOrigin.y = contentHeight - CGFloat(dataSource.configuration.cardHeight - offset)
+                        if index == row {
+                            lastOffset = frameOrigin.y + CGFloat(dataSource.configuration.cardHeight)
+                        }
+                        print("less equal","index", index, "row", row, "yOrigin", frameOrigin.y)
+                    } else {
+                        frameOrigin.y = lastOffset + CGFloat(dataSource.configuration.cardOffset * Float(index - row - 1))
+                        print("greater","index", index, "row", row, "yOrigin", frameOrigin.y)
+                    }
                 }
             }
             
@@ -99,6 +135,17 @@ class StackCardLayout: UICollectionViewLayout {
             }
         }
         frame.origin = frameOrigin
+        return frame
+    }
+    
+    func resetToCollapse(index: Int) -> CGRect {
+        var frame = CGRect(origin: CGPoint(x: CGFloat(dataSource.configuration.leftSpacing),
+                                           y: 0), size: CGSize(width:UIScreen.main.bounds.width - CGFloat(dataSource.configuration.leftSpacing + dataSource.configuration.rightSpacing), height: CGFloat(dataSource.configuration.cardHeight)))
+        var frameOrigin = frame.origin
+        frame.origin = frameOrigin
+        if index > 0 {
+            frameOrigin.y = CGFloat(dataSource.configuration.verticalSpacing + (dataSource.configuration.cardOffset * Float(index)))
+        }
         return frame
     }
 }

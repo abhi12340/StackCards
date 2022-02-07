@@ -11,7 +11,7 @@ import UIKit
 
 public protocol StackCardCell: UICollectionViewCell {
     var indexPath: IndexPath? { get set }
-    var cellState: CardsPosition? { get set }
+    var cellState: CardsPosition { get set }
 }
 
 /// Struct for the UI information related to cards.
@@ -65,8 +65,8 @@ public struct Configuration {
 
 /// Delegate to get hooks to interaction over cards
 @objc public protocol StackCardsManagerDelegate {
-    @objc optional func stack(tappded cell: UICollectionViewCell,
-                              for indexPath: IndexPath,
+    @objc optional func stack(tappded cell: UICollectionViewCell?,
+                              for indexPath: IndexPath?,
                               state: CardsPosition)
 }
 
