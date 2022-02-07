@@ -10,6 +10,6 @@ target 'StackCards' do
 end
 
 target 'DemoApplication' do
-    pod 'StackCards', :path => "/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards"
-   # pod 'StackCards' , '0.0.1'
+    #pod 'StackCards', :path => "/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards"
+    pod 'StackCards' , '1.0.0'
 end

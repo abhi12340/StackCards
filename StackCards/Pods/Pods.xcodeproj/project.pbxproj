@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A77FFFC946CF57670A242F8369BF32B /* StackCards-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC4A8A187B7636D7953DC69F1AFEB258 /* StackCards-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0E6872302BE934D0BE9F62F9615CC384 /* StackCards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CCCE55CC75B6A465C9AFA303B39B32 /* StackCards-dummy.m */; };
+		0A77FFFC946CF57670A242F8369BF32B /* StackCards-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39780DC4D64C757EE7FEAB3FF7C4BC1B /* StackCards-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0E6872302BE934D0BE9F62F9615CC384 /* StackCards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C608F45E7A0507FFB452BFAA11AC1288 /* StackCards-dummy.m */; };
+		14253E4A79144447179A1BED275109F7 /* StackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DCBB7587AB9881867797E2A53131C9 /* StackCard.swift */; };
 		1B486A0CB85A4C9908B1FADF388AAF83 /* Pods-StackCards-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E17273AC99B9775E151D2D657930AEC8 /* Pods-StackCards-dummy.m */; };
 		3C81F0C61966EBD585A30585132FA1DD /* Pods-DemoApplication-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CB1204E43F0874F826F9B6DD1B7F1F /* Pods-DemoApplication-dummy.m */; };
+		49AB8B788F35A83494D82B3348FC03F1 /* StackCardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832F8071597CA6173BACC647D795BF6 /* StackCardsManager.swift */; };
 		5D2D0ACA1A28C3685988991D55FE34F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		8DB73A09287D3B302C1B880A9882C88C /* StackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DAE6D2F622410CE522E8DFD4691970 /* StackCard.swift */; };
+		87060121A5EE6611FD28022B92363283 /* StackCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B90D0228E53BD1F1DB8F7BF95A6BF2 /* StackCardLayout.swift */; };
 		9F912F531BAFEEDBD2A5E99518890337 /* Pods-DemoApplication-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F6BC98E0A1698B39AAAA2A9BC05AAC1B /* Pods-DemoApplication-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		CE7F7B1D42D05897D1604001FF99F61A /* StackCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF17860DA8775EB370CC4E660862697D /* StackCardLayout.swift */; };
 		D6F040934B989ABA59EB989376F0CE2F /* Pods-StackCards-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D5CFAA802BBBBFD826DE250F332F74EA /* Pods-StackCards-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2051BBBA2973A4C8549A49E8A27A87D /* StackCardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2111F527E5966424194294FC3288BF /* StackCardsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C9257D6D25D2FAF82F62128E18FC0411 /* PBXContainerItemProxy */ = {
+		95E690F0B867F99CCD1D8FD5B5DF675A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -30,34 +30,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		012AEE5396CC4DD3764ECEDD287DBA9C /* StackCards.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = StackCards.modulemap; sourceTree = "<group>"; };
+		03DCBB7587AB9881867797E2A53131C9 /* StackCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackCard.swift; path = StackCards/StackCards/StackCard.swift; sourceTree = "<group>"; };
+		12B90D0228E53BD1F1DB8F7BF95A6BF2 /* StackCardLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackCardLayout.swift; path = StackCards/StackCards/StackCardLayout.swift; sourceTree = "<group>"; };
 		172DB58384D3B33C40C75360070D1452 /* Pods-StackCards */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-StackCards"; path = Pods_StackCards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19207E2DFA7CCF2E703E929F630C514B /* StackCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StackCards.debug.xcconfig; sourceTree = "<group>"; };
 		20B05F87AC8FA5F122AC64D0891E7CA9 /* Pods-DemoApplication.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DemoApplication.modulemap"; sourceTree = "<group>"; };
 		22BFC8024686A07BD3023A0F8A14FD5A /* Pods-DemoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DemoApplication.release.xcconfig"; sourceTree = "<group>"; };
 		2A4D632B78858A8C4954DF7ABEF6C761 /* Pods-StackCards.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-StackCards.modulemap"; sourceTree = "<group>"; };
 		35F4AD4924C96A43D496508336805728 /* Pods-StackCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StackCards.release.xcconfig"; sourceTree = "<group>"; };
+		3832F8071597CA6173BACC647D795BF6 /* StackCardsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackCardsManager.swift; path = StackCards/StackCards/StackCardsManager.swift; sourceTree = "<group>"; };
+		39780DC4D64C757EE7FEAB3FF7C4BC1B /* StackCards-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StackCards-umbrella.h"; sourceTree = "<group>"; };
 		43640DA0D263C088E155B06A24BDE2F0 /* Pods-DemoApplication */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-DemoApplication"; path = "libPods-DemoApplication.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47E816C0919EC34F8174AB02905B62B0 /* Pods-DemoApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DemoApplication.debug.xcconfig"; sourceTree = "<group>"; };
-		50590DD31DB26C51A145C9ED8BA36D8D /* StackCards.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = StackCards.modulemap; sourceTree = "<group>"; };
-		62156590D24F9BD2707188B78AAF82F6 /* StackCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StackCards.release.xcconfig; sourceTree = "<group>"; };
-		66DAE6D2F622410CE522E8DFD4691970 /* StackCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackCard.swift; path = StackCards/StackCard.swift; sourceTree = "<group>"; };
-		6DB79AB0F05ACC1F5228C55BD4557968 /* StackCards.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = StackCards.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		519A28E420E13D4BA2D281DD18452C95 /* StackCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StackCards.debug.xcconfig; sourceTree = "<group>"; };
+		57FAFCFF510E3373BCF9C0159CAFEA5D /* StackCards-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StackCards-prefix.pch"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		79CB1204E43F0874F826F9B6DD1B7F1F /* Pods-DemoApplication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DemoApplication-dummy.m"; sourceTree = "<group>"; };
 		8ACBDFE5F9D18AD2E6DA005D35C0F7D0 /* Pods-StackCards-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StackCards-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9A2E1BF211094A25C074087642A1FF88 /* Pods-StackCards-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StackCards-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E746675877D6309CBFE332AD09B160F /* Pods-StackCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StackCards.debug.xcconfig"; sourceTree = "<group>"; };
-		AF17860DA8775EB370CC4E660862697D /* StackCardLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackCardLayout.swift; path = StackCards/StackCardLayout.swift; sourceTree = "<group>"; };
+		A0E042D8A5351716B288EDEDA7511728 /* StackCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StackCards.release.xcconfig; sourceTree = "<group>"; };
 		B1C085881739AF6115624045A7B13740 /* Pods-StackCards-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StackCards-acknowledgements.plist"; sourceTree = "<group>"; };
-		B7CCCE55CC75B6A465C9AFA303B39B32 /* StackCards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "StackCards-dummy.m"; sourceTree = "<group>"; };
 		B887C5F2F8AF8F029C0BB14BC2C89255 /* Pods-DemoApplication-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DemoApplication-acknowledgements.plist"; sourceTree = "<group>"; };
 		C311CED47028E46C0B4AB5B1C1F43E20 /* StackCards */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = StackCards; path = libStackCards.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD2111F527E5966424194294FC3288BF /* StackCardsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StackCardsManager.swift; path = StackCards/StackCardsManager.swift; sourceTree = "<group>"; };
+		C608F45E7A0507FFB452BFAA11AC1288 /* StackCards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "StackCards-dummy.m"; sourceTree = "<group>"; };
 		D5CFAA802BBBBFD826DE250F332F74EA /* Pods-StackCards-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StackCards-umbrella.h"; sourceTree = "<group>"; };
 		D9BA9D806BE112813A48336367DBF852 /* Pods-DemoApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DemoApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
-		DC4A8A187B7636D7953DC69F1AFEB258 /* StackCards-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StackCards-umbrella.h"; sourceTree = "<group>"; };
-		DFAB47F2A85D7F3D1C55F32418EE882C /* StackCards-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StackCards-prefix.pch"; sourceTree = "<group>"; };
 		E17273AC99B9775E151D2D657930AEC8 /* Pods-StackCards-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StackCards-dummy.m"; sourceTree = "<group>"; };
 		F6BC98E0A1698B39AAAA2A9BC05AAC1B /* Pods-DemoApplication-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DemoApplication-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,40 +87,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		156FE76768441BEF0D7641D2317E0D10 /* Development Pods */ = {
+		1FDD006910C14963F00B578F65B59560 /* StackCards */ = {
 			isa = PBXGroup;
 			children = (
-				24F51FCE2688B113913250F5AB0BE69F /* StackCards */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		20FE0365BC97DBB92288856A575066B5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				50590DD31DB26C51A145C9ED8BA36D8D /* StackCards.modulemap */,
-				B7CCCE55CC75B6A465C9AFA303B39B32 /* StackCards-dummy.m */,
-				DFAB47F2A85D7F3D1C55F32418EE882C /* StackCards-prefix.pch */,
-				DC4A8A187B7636D7953DC69F1AFEB258 /* StackCards-umbrella.h */,
-				19207E2DFA7CCF2E703E929F630C514B /* StackCards.debug.xcconfig */,
-				62156590D24F9BD2707188B78AAF82F6 /* StackCards.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Pods/Target Support Files/StackCards";
-			sourceTree = "<group>";
-		};
-		24F51FCE2688B113913250F5AB0BE69F /* StackCards */ = {
-			isa = PBXGroup;
-			children = (
-				66DAE6D2F622410CE522E8DFD4691970 /* StackCard.swift */,
-				AF17860DA8775EB370CC4E660862697D /* StackCardLayout.swift */,
-				CD2111F527E5966424194294FC3288BF /* StackCardsManager.swift */,
-				D2EF33BA0A110C6D7EB2FEF3FB03845F /* Pod */,
-				20FE0365BC97DBB92288856A575066B5 /* Support Files */,
+				03DCBB7587AB9881867797E2A53131C9 /* StackCard.swift */,
+				12B90D0228E53BD1F1DB8F7BF95A6BF2 /* StackCardLayout.swift */,
+				3832F8071597CA6173BACC647D795BF6 /* StackCardsManager.swift */,
+				37310B41B5A2BEA97A77038C3F03D542 /* Support Files */,
 			);
 			name = StackCards;
-			path = /Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards;
-			sourceTree = "<absolute>";
+			path = StackCards;
+			sourceTree = "<group>";
 		};
 		326BFF1CCC174B4F920E8E63759BAC37 /* Targets Support Files */ = {
 			isa = PBXGroup;
@@ -132,6 +108,20 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		37310B41B5A2BEA97A77038C3F03D542 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				012AEE5396CC4DD3764ECEDD287DBA9C /* StackCards.modulemap */,
+				C608F45E7A0507FFB452BFAA11AC1288 /* StackCards-dummy.m */,
+				57FAFCFF510E3373BCF9C0159CAFEA5D /* StackCards-prefix.pch */,
+				39780DC4D64C757EE7FEAB3FF7C4BC1B /* StackCards-umbrella.h */,
+				519A28E420E13D4BA2D281DD18452C95 /* StackCards.debug.xcconfig */,
+				A0E042D8A5351716B288EDEDA7511728 /* StackCards.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/StackCards";
+			sourceTree = "<group>";
+		};
 		39B5BFD6FF2393FD332657321FD4DF7D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +130,14 @@
 				C311CED47028E46C0B4AB5B1C1F43E20 /* StackCards */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3D8EBFE59310406EE9F3C118D79EC45B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FDD006910C14963F00B578F65B59560 /* StackCards */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -185,8 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				156FE76768441BEF0D7641D2317E0D10 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				3D8EBFE59310406EE9F3C118D79EC45B /* Pods */,
 				39B5BFD6FF2393FD332657321FD4DF7D /* Products */,
 				326BFF1CCC174B4F920E8E63759BAC37 /* Targets Support Files */,
 			);
@@ -198,14 +196,6 @@
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D2EF33BA0A110C6D7EB2FEF3FB03845F /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				6DB79AB0F05ACC1F5228C55BD4557968 /* StackCards.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +275,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				51A643CB305F519DE32C484E6FB1C9F7 /* PBXTargetDependency */,
+				F9D465FB11D51A4474542A41002D381D /* PBXTargetDependency */,
 			);
 			name = "Pods-DemoApplication";
 			productName = "Pods-DemoApplication";
@@ -379,28 +369,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DB73A09287D3B302C1B880A9882C88C /* StackCard.swift in Sources */,
-				CE7F7B1D42D05897D1604001FF99F61A /* StackCardLayout.swift in Sources */,
+				14253E4A79144447179A1BED275109F7 /* StackCard.swift in Sources */,
+				87060121A5EE6611FD28022B92363283 /* StackCardLayout.swift in Sources */,
 				0E6872302BE934D0BE9F62F9615CC384 /* StackCards-dummy.m in Sources */,
-				F2051BBBA2973A4C8549A49E8A27A87D /* StackCardsManager.swift in Sources */,
+				49AB8B788F35A83494D82B3348FC03F1 /* StackCardsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		51A643CB305F519DE32C484E6FB1C9F7 /* PBXTargetDependency */ = {
+		F9D465FB11D51A4474542A41002D381D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = StackCards;
 			target = 016B815291C4A8A914114D950876E208 /* StackCards */;
-			targetProxy = C9257D6D25D2FAF82F62128E18FC0411 /* PBXContainerItemProxy */;
+			targetProxy = 95E690F0B867F99CCD1D8FD5B5DF675A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1B975DD35EDCF45AAFA48091E1FC38E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19207E2DFA7CCF2E703E929F630C514B /* StackCards.debug.xcconfig */;
+			baseConfigurationReference = 519A28E420E13D4BA2D281DD18452C95 /* StackCards.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -447,7 +437,7 @@
 		};
 		2509DB37827B75009BD412B5CF163299 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62156590D24F9BD2707188B78AAF82F6 /* StackCards.release.xcconfig */;
+			baseConfigurationReference = A0E042D8A5351716B288EDEDA7511728 /* StackCards.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

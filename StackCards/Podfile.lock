@@ -1,16 +1,16 @@
 PODS:
-  - StackCards (0.0.1)
+  - StackCards (1.0.0)
 
 DEPENDENCIES:
-  - StackCards (from `/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards`)
+  - StackCards (= 1.0.0)
 
-EXTERNAL SOURCES:
-  StackCards:
-    :path: "/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards"
+SPEC REPOS:
+  trunk:
+    - StackCards
 
 SPEC CHECKSUMS:
-  StackCards: b936d43414eb0130e3c80b14a7c336fbb9cbba09
+  StackCards: 4cdb1cb4fcb3a9cd4cdc9f1324e60bb73dd9dcbb
 
-PODFILE CHECKSUM: 416651b65519a4cec9a1b185036eff9e3533daf7
+PODFILE CHECKSUM: 756e9fe6083253f1cd0785b3d290bbd58d4dc1ce
 
 COCOAPODS: 1.11.2
