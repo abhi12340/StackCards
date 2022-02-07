@@ -8,7 +8,7 @@
 import UIKit
 import StackCards
 
-class ViewController: UIViewController {
+class DemoController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeightConstaints: NSLayoutConstraint!
@@ -29,20 +29,16 @@ class ViewController: UIViewController {
         cardsStack?.datasource = self
         cardsStack?.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
-extension ViewController: StackCardsManagerDelegate {
+extension DemoController: StackCardsManagerDelegate {
     
     func stack(tappded cell: UICollectionViewCell?, for indexPath: IndexPath?, state: CardsPosition) {
         print("debugging", indexPath?.row ?? 0, "state", state.rawValue)
     }
 }
 
-extension ViewController: StackCardManagerDataSource {
+extension DemoController: StackCardManagerDataSource {
     
     func stack(_ cardsCollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cardView = cardsStack?.dequeueReusableCellStackCard(withReuseIdentifier: "cardCell", for: indexPath) as? CardCell else {
