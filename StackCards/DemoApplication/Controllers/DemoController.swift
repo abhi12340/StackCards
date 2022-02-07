@@ -20,7 +20,7 @@ class DemoController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let expandedHeight = Float(UIScreen.main.bounds.size.height - 124)
+        let expandedHeight = Float(UIScreen.main.bounds.size.height - 150)
         
         let config = Configuration(cardOffset: 40, collapsedHeight: 200, expandedHeight: expandedHeight, cardHeight: 200, leftSpacing: 16.0, rightSpacing: 16.0)
 

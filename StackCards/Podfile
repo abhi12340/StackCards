@@ -11,4 +11,5 @@ end
 
 target 'DemoApplication' do
     pod 'StackCards', :path => "/Users/abhishekkumar/Desktop/Assignment/StackCards/StackCards"
+   # pod 'StackCards' , '0.0.1'
 end
