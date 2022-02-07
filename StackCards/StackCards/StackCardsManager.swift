@@ -9,11 +9,6 @@ import Foundation
 import UIKit
 
 
-internal enum StackedCardState {
-    case expanded
-    case collapsed
-}
-
 class StackCardsManager: NSObject, StackCardLayoutDatasource {
     
     var needToReset: Bool = false
@@ -34,17 +29,6 @@ class StackCardsManager: NSObject, StackCardLayoutDatasource {
     weak var collectionView: UICollectionView?
     weak var cardsCollectionViewHeight: NSLayoutConstraint?
     weak var stackCard: StackCard? = nil
-    
-    func cardsStateFromCardsPosition(position: CardsPosition?) -> StackedCardState? {
-        switch position {
-        case .expanded:
-            return StackedCardState.expanded
-        case .collapsed:
-            return StackedCardState.collapsed
-        default:
-            return nil
-        }
-    }
 
     init(stackCardState: CardsPosition,
          configuration: Configuration,
@@ -65,13 +49,11 @@ class StackCardsManager: NSObject, StackCardLayoutDatasource {
     
     func updateView(with position: CardsPosition) {
         var ht:Float = 0.0
-        let stackedCardState = cardsStateFromCardsPosition(position: position)
+        let stackedCardState = position
         switch stackedCardState {
         case .collapsed:
             ht = configuration.expandedHeight
         case .expanded:
-            ht = configuration.collapsedHeight
-        default:
             ht = configuration.collapsedHeight
         }
         
